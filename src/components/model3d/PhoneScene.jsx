@@ -1,8 +1,9 @@
 import { Environment, ScrollControls, useTrail } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
-import React from 'react'
+import React, { Suspense } from 'react'
 import PhoneModel from './PhoneModel'
 import { motion, useScroll, useTransform } from "motion/react"
+import Loading from '../shared/Loading'
 const PhoneScene = () => {
 
      return (
@@ -12,7 +13,10 @@ const PhoneScene = () => {
                     <Environment
                          files={["https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/ferndale_studio_11_1k.hdr"]}
                     />
+
                     <PhoneModel />
+
+
                </Canvas>
           </div>
      )

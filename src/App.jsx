@@ -6,6 +6,7 @@ import PhoneScene from './components/model3d/PhoneScene';
 import Navbar from './components/shared/Navbar';
 import Landing from './pages/Landing';
 import Property from './pages/Property';
+import Loading from './components/shared/Loading';
 
 
 
@@ -32,6 +33,7 @@ function App() {
 
   return (
     <div className='w-screen min-h-[500vh] relative bg-[#f5f5f5] '>
+      <Loading/>
       <Navbar/>
       <PhoneScene />
       <Landing/>

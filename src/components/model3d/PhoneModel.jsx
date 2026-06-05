@@ -1,86 +1,96 @@
 import { useGLTF, useTexture, useTrailTexture } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
-import { useMotionValueEvent, useScroll ,motion, useTransform, useSpring} from 'motion/react'
+import { useMotionValueEvent, useScroll, motion, useTransform, useSpring } from 'motion/react'
 import { div } from 'motion/react-client'
 import React, { useEffect, useRef } from 'react'
 import { useFormState } from 'react-dom'
 import * as THREE from "three"
 
 const PhoneModel = () => {
-
-     const model = useGLTF("./models/iphone_15_pro_max_black/scene.gltf")
-     let tex = useTexture("./images/home2.jpg")
-
-     tex.colorSpace = THREE.SRGBColorSpace;
-     tex.magFilter = THREE.NearestFilter;
-
-     model.scene.rotation.y = THREE.MathUtils.degToRad(170)
-
+     
+     let model;
+     let textures;
      let phoneScreen;
-     let screenGlass;
+     
+     const ref = useRef(null)
+     const { scrollYProgress } = useScroll()
+
+     model = useGLTF("./models/iphone_15_pro_max_black/scene.gltf")
 
      model.scene.traverse((child) => {
           if (child.isMesh) {
                if (child.material?.name === "pIJKfZsazmcpEiU") {
-                    // console.log("SCREEN FOUND:", child);
                     phoneScreen = child
                }
           }
      });
-     model.scene.traverse((child) => {
-          if (child.isMesh) {
-               if (child.material?.name === "sxNzrmuTqVeaXdg") {
-                    console.log("Glass FOUND:", child);
-                    screenGlass = child
 
-               }
-          }
-     });
+     textures = useTexture([
+          "./images/home2.jpg",
+          "./images/propertyDetail.jpg",
+          "./images/map.jpg",
+          "./images/filters.jpg",
+          "./images/saved.jpg",
+     ])
 
-     phoneScreen.material.emissiveMap = tex
      phoneScreen.material.emissiveIntensity = 1
-     phoneScreen.material.map = tex
      phoneScreen.material.color.set(0xffffff);
      phoneScreen.material.emissive.set(0xffffff);
      phoneScreen.material.toneMapped = false;
 
-     screenGlass.material.roughness = .8
+     textures.map((_, i) => {
+          textures[i].colorSpace = THREE.SRGBColorSpace;
+          textures[i].magFilter = THREE.NearestFilter;
+     })
+
+     model.scene.rotation.y = THREE.MathUtils.degToRad(170)
 
 
-     const ref = useRef(null)
 
-     const { scrollYProgress } = useScroll()
-
-
+     useMotionValueEvent(scrollYProgress, "change", (latest) => {
+          console.log("model scroll : ", latest)
+     })
      // transformed variables
 
+     // texture index
+     const textureIndex = useTransform(scrollYProgress, (s) => {
+          if (s < .65) { return 0 }
+          if (s > .65) { return 1 }
+     })
+
      // rotation
-     const rotateY = useTransform(scrollYProgress,[0,.2,1],[Math.PI*1 , Math.PI*.8 ,Math.PI*.8])
-     const rotateX = useTransform(scrollYProgress,[0,.2,1],[Math.PI*0 , -Math.PI*.085 ,-Math.PI*.085])
-     const rotateZ = useTransform(scrollYProgress,[0,.2,1],[Math.PI*0 , Math.PI*.06 ,Math.PI*.06])
+     const rotateY = useTransform(scrollYProgress, [0, .2, .55, .75, 1], [Math.PI * 1, Math.PI * .8, Math.PI * .8, -Math.PI * .8, -Math.PI * .8])
+     const rotateX = useTransform(scrollYProgress, [0, .2, .55, .75, 1], [Math.PI * 0, -Math.PI * .085, -Math.PI * .085, -Math.PI * .085, -Math.PI * .085,])
+     const rotateZ = useTransform(scrollYProgress, [0, .2, .55, .75, 1], [Math.PI * 0, Math.PI * .06, Math.PI * .06, -Math.PI * .06, -Math.PI * .06])
 
 
      // move
-     const moveRight = useTransform(scrollYProgress,[0,.2],[0,.15])
-     const moveUp = useTransform(scrollYProgress,[0,.2],[-0.15 ,0])
+     const moveX = useTransform(scrollYProgress, [0, .2, .55, .75], [0, .15, .15, -.15])
+     const moveUp = useTransform(scrollYProgress, [0, .2], [-0.15, 0])
 
      // scale
-     const scaleDown = useTransform(scrollYProgress,[0,.2],[2,1.3])
-     
+     const scaleDown = useTransform(scrollYProgress, [0, .2], [2, 1.3])
 
-     useFrame((state , delta)=>{
+
+     useFrame((state, delta) => {
+
+          phoneScreen.material.emissiveMap = textures[textureIndex.get()]
+          phoneScreen.material.map = textures[textureIndex.get()]
+
           model.scene.rotation.y = rotateY.get();
           model.scene.rotation.x = rotateX.get();
           model.scene.rotation.z = rotateZ.get();
 
 
-          ref.current.position.set(moveRight.get(),moveUp.get(),0)
+          ref.current.position.set(moveX.get(), moveUp.get(), 0)
           ref.current.scale.setScalar(scaleDown.get());
+
+
      })
 
      return (
           <group ref={ref}>
-               <primitive object={model.scene}  />
+               <primitive object={model.scene} />
           </group>
 
 

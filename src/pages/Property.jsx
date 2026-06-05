@@ -9,8 +9,10 @@ const Property = () => {
           offset:["start start","end end"]
      })
 
-     const cardsOpacity = useTransform(scrollYProgress,[.2,.4,1],[0,1,1])
-     const numsOpacity = useTransform(scrollYProgress,[.4,.6 ,1],[0,1,1])
+     const cardsOpacity = useTransform(scrollYProgress,[.1,.4,1],[0,1,1])
+     const cardsMove = useTransform(scrollYProgress,[.1,.4,1],[40,0,0])
+     const numsOpacity = useTransform(scrollYProgress,[.4,.7 ,1],[0,1,1])
+     const numsMove = useTransform(scrollYProgress,[.4,.7,1],[40,0,0])
      useMotionValueEvent(scrollYProgress,"change",(latest)=>{
           console.log(cardsOpacity.current)
      })
@@ -27,7 +29,7 @@ const Property = () => {
                     </div>
 
                     <div className="w-full flex flex-col gap-20">
-                         <motion.div style={{opacity:cardsOpacity}} className='flex justify-between items-center '>
+                         <motion.div style={{opacity:cardsOpacity , y:cardsMove}} className={`flex justify-between items-center`}>
                               <div className='w-[10vw] h-[8vh] flex flex-col gap-4'>
                                    <div className='p-2 bg-white w-12 h-12 flex justify-center items-center rounded-xl aspect-square'>
                                         <Search className='' />
@@ -65,7 +67,7 @@ const Property = () => {
                                    </div>
                               </div>
                          </motion.div>
-                         <motion.div style={{opacity:numsOpacity}} className='w-full h-[15vh] rounded-xl bg-white shadow-xl  p-5 flex justify-between items-center'> 
+                         <motion.div style={{opacity:numsOpacity , y:numsMove}} className='w-full h-[15vh] rounded-xl bg-white shadow-xl  p-5 flex justify-between items-center'> 
                               <div className='w-[20%] h-full flex justify-center pl-5 flex-col border-r border-zinc-300'>
                                    <p className='poppins500 text-3xl mb-3'>10+</p>
                                    <p className='poppins500 text-sm mb-1'>Properties</p>

@@ -3,7 +3,7 @@ import React from 'react'
 
 const Navbar = () => {
      return (
-          <nav className='w-full p-4 flex justify-between fixed top-0 left-0 text-zinc-900 z-50'>
+          <nav className='w-full p-4 flex justify-between fixed top-0 left-0 text-zinc-900 z-30'>
                <div className='w-16'>
                     <img src={"./icon/kribb.png"} alt="kribb" className='w-full bg-contain' />
                </div>
