@@ -1,4 +1,4 @@
-import { useGLTF, useTexture, useTrailTexture } from '@react-three/drei'
+import { ContactShadows, useGLTF, useTexture, useTrailTexture } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useMotionValueEvent, useScroll, motion, useTransform, useSpring } from 'motion/react'
 import { div } from 'motion/react-client'
@@ -7,11 +7,11 @@ import { useFormState } from 'react-dom'
 import * as THREE from "three"
 
 const PhoneModel = () => {
-     
+
      let model;
      let textures;
      let phoneScreen;
-     
+
      const ref = useRef(null)
      const { scrollYProgress } = useScroll()
 
@@ -29,8 +29,8 @@ const PhoneModel = () => {
           "./images/home2.jpg",
           "./images/propertyDetail.jpg",
           "./images/map.jpg",
-          "./images/filters.jpg",
           "./images/saved.jpg",
+          "./images/filters.jpg",
      ])
 
      phoneScreen.material.emissiveIntensity = 1
@@ -54,22 +54,24 @@ const PhoneModel = () => {
 
      // texture index
      const textureIndex = useTransform(scrollYProgress, (s) => {
-          if (s < .65) { return 0 }
-          if (s > .65) { return 1 }
+          if (s < .39) { return 0 }
+          if (s > .39 && s < .61) { return 1 }
+          if (s > .61 && s<.67) {return 2}
+          if (s >.67) {return 3}
      })
 
      // rotation
-     const rotateY = useTransform(scrollYProgress, [0, .2, .55, .75, 1], [Math.PI * 1, Math.PI * .8, Math.PI * .8, -Math.PI * .8, -Math.PI * .8])
-     const rotateX = useTransform(scrollYProgress, [0, .2, .55, .75, 1], [Math.PI * 0, -Math.PI * .085, -Math.PI * .085, -Math.PI * .085, -Math.PI * .085,])
-     const rotateZ = useTransform(scrollYProgress, [0, .2, .55, .75, 1], [Math.PI * 0, Math.PI * .06, Math.PI * .06, -Math.PI * .06, -Math.PI * .06])
+     const rotateY = useTransform(scrollYProgress, [0, .15, .33, .52, 1], [Math.PI * 1, Math.PI * .8, Math.PI * .8, -Math.PI * .8, -Math.PI * .8])
+     const rotateX = useTransform(scrollYProgress, [0, .15, .33, .52, 1], [Math.PI * 0, -Math.PI * .085, -Math.PI * .085, -Math.PI * .085, -Math.PI * .085,])
+     const rotateZ = useTransform(scrollYProgress, [0, .15, .33, .52, 1], [Math.PI * 0, Math.PI * .06, Math.PI * .06, -Math.PI * .06, -Math.PI * .06])
 
 
      // move
-     const moveX = useTransform(scrollYProgress, [0, .2, .55, .75], [0, .15, .15, -.15])
-     const moveUp = useTransform(scrollYProgress, [0, .2], [-0.15, 0])
+     const moveX = useTransform(scrollYProgress, [0, .15, .33, .52], [0, .15, .15, -.15])
+     const moveUp = useTransform(scrollYProgress, [0, .15], [-0.15, 0])
 
      // scale
-     const scaleDown = useTransform(scrollYProgress, [0, .2], [2, 1.3])
+     const scaleDown = useTransform(scrollYProgress, [0, .15], [2, 1.3])
 
 
      useFrame((state, delta) => {

@@ -20,7 +20,7 @@ const Loading = () => {
     <AnimatePresence>
       {show && (
         <motion.div
-          className="w-screen h-screen fixed top-0 left-0 z-50 bg-[#f5f5f5] flex justify-center items-center"
+          className={`w-screen h-screen fixed top-0 left-0 ${show?"z-50" : "z-0"} bg-[#f5f5f5] flex justify-center items-center`}
           initial={{ y: 0 }}
           animate={{ y: 0 }}
           exit={{
