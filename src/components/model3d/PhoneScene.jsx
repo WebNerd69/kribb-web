@@ -9,7 +9,12 @@ const PhoneScene = () => {
      return (
           <div className="fixed top-0 left-0 w-screen h-screen z-30">
 
-               <Canvas camera={{ fov: 1, position: [0, 0, 15] }}>
+               <Canvas
+                    camera={{ fov: 1, position: [0, 0, 15] }}
+                    dpr={[1, 1.5]}
+                    gl={{ antialias: true }}
+
+               >
                     <Environment
                          files={["https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/ferndale_studio_11_1k.hdr"]}
                     />

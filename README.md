@@ -1,6 +1,6 @@
 # Kribb Web
 
-![Kribb Web](./public/images/hero-gh.png)
+![Kribb Web](./public/images/hero-gh.webp)
 
 <p align="center">
   <strong>The official landing page for Kribb.</strong>
