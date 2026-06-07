@@ -4,10 +4,10 @@ import React from 'react'
 const Landing = () => {
   return (
     <div className='w-full h-screen text-zinc-900 flex justify-center items-center relative'>
-      <h1 className='text-[40vh] unbounded600'>
+      <h1 className='text-[13vh] xl:text-[40vh] unbounded600'>
         Kribb
       </h1>
-      <div className="w-[33vw] h-[33vh] flex flex-col gap-20 absolute bottom-0 right-0 ">
+      <div className="w-[80vw] xl:w-[33vw] h-[33vh] flex flex-col gap-20 absolute bottom-0 right-0 ">
         <div className='text-xl poppins400 text-zinc-900'>
 
           <p>

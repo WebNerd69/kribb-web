@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css'
 import 'remixicon/fonts/remixicon.css'
 
@@ -14,6 +14,9 @@ import Footer from './pages/Footer';
 
 
 function App() {
+
+  const [isMobile, setIsMobile] = useState(false)
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -33,16 +36,23 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 900)
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check)
+  }, [])
+
 
   return (
-    <div className='w-screen min-h-[500vh] relative bg-[#f5f5f5] '>
-      <Loading/>
-      <Navbar/>
-      <PhoneScene />
-      <Landing/>
-      <Home/>
-      <Property/>
-      <Footer/>
+    <div className='w-screen min-h-[500vh] relative bg-[#f5f5f5] overflow-clip'>
+      {!isMobile && <Loading />}
+      <Navbar />
+      {!isMobile && <PhoneScene />}
+      <Landing />
+      <Home />
+      <Property />
+      <Footer />
     </div>
   )
 }

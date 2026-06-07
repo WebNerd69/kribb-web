@@ -28,11 +28,11 @@ const Property = () => {
      const x1 = useSpring(useTransform(scrollYProgress, [.7, .85], [-40, 0]))
 
      return (
-          <div ref={propertyRef} className='w-full h-[250vh] relative flex justify-end'>
-               <div className="sticky top-[10%] w-[60%] h-[80vh] flex flex-col gap-5 justify-between mb-20">
+          <div ref={propertyRef} className='w-full h-[250vh] relative flex justify-end p-4 xl:p-0 mb-10 xl:mb-0'>
+               <div className="sticky top-20 xl:top-[10%] xl:w-[60%] h-[80vh] flex flex-col gap-5 justify-between mb-20">
                     <div className='flex flex-col gap-5'>
 
-                         <p className='text-5xl w-[70%] poppins500'>
+                         <p className='text-3xl xl:text-5xl xl:w-[70%] poppins500'>
                               Everything you need to know before you decide.
                          </p>
                          <p className=' text-zinc-500 poppins400'>Property details all in one place.</p>
@@ -45,8 +45,8 @@ const Property = () => {
                                    <FileText className='w-12 h-12 p-3 rounded-full bg-zinc-200' />
                               </div>
                               <div>
-                                   <p className='text-lg poppins500'>Complete Property overview.</p>
-                                   <p className='poppins400 text-zinc-500'>Access all the key details of the property in one place.</p>
+                                   <p className='xl:text-lg poppins500'>Complete Property overview.</p>
+                                   <p className='text-sm xl:text-normal poppins400 text-zinc-500'>Access all the key details of the property in one place.</p>
                               </div>
                          </motion.div>
                          <motion.div
@@ -56,8 +56,8 @@ const Property = () => {
                                    <LandPlot className='w-12 h-12 p-3 rounded-full bg-zinc-200' />
                               </div>
                               <div>
-                                   <p className='text-lg poppins500'>Key features at a glance.</p>
-                                   <p className='poppins400 text-zinc-500'>Bedrooms, bathrooms, area, type and more.</p>
+                                   <p className='xl:text-lg poppins500'>Key features at a glance.</p>
+                                   <p className='text-sm xl:text-normal poppins400 text-zinc-500'>Bedrooms, bathrooms, area, type and more.</p>
                               </div>
                          </motion.div>
                          <motion.div
@@ -67,8 +67,8 @@ const Property = () => {
                                    <MapPin className='w-12 h-12 p-3 rounded-full bg-zinc-200' />
                               </div>
                               <div>
-                                   <p className='text-lg poppins500'>Prime location.</p>
-                                   <p className='poppins400 text-zinc-500'>See the exact locations and neighbourhood insights.</p>
+                                   <p className='xl:text-lg poppins500'>Prime location.</p>
+                                   <p className='text-sm xl:text-normal poppins400 text-zinc-500'>See the exact locations and neighbourhood insights.</p>
                               </div>
                          </motion.div>
                          <motion.div
@@ -78,8 +78,8 @@ const Property = () => {
                                    <ShieldCheck className='w-12 h-12 p-3 rounded-full bg-zinc-200' />
                               </div>
                               <div>
-                                   <p className='text-lg poppins500'>Verified & trusted.</p>
-                                   <p className='poppins400 text-zinc-500'>Every listing is verified for your peace of mind.</p>
+                                   <p className='xl:text-lg poppins500'>Verified & trusted.</p>
+                                   <p className='text-sm xl:text-normal poppins400 text-zinc-500'>Every listing is verified for your peace of mind.</p>
                               </div>
                          </motion.div>
                          <motion.div
@@ -89,18 +89,18 @@ const Property = () => {
                                    <Heart className='w-12 h-12 p-3 rounded-full bg-zinc-200' />
                               </div>
                               <div>
-                                   <p className='text-lg poppins500'>Save & compare.</p>
-                                   <p className='poppins400 text-zinc-500'>Save and compare your favourites in a single click.</p>
+                                   <p className='xl:text-lg poppins500'>Save & compare.</p>
+                                   <p className='text-sm xl:text-normal poppins400 text-zinc-500'>Save and compare your favourites in a single click.</p>
                               </div>
                          </motion.div>
                     </div>
-                    <motion.div style={{ opacity: opacity6 }} className='border-t-2 border-zinc-200 w-[50%] flex justify-between py-5'>
+                    <motion.div style={{ opacity: opacity6 }} className='border-t-2 border-zinc-200 xl:w-[50%] flex justify-between py-5 flex items-center'>
                          <div className='flex flex-col gap-1'>
-                              <p className='text-lg poppins500'>Find your perfect place.</p>
-                              <p className='poppins400 text-zinc-500'>Book a visit or connect with our agents.</p>
+                              <p className='xl:text-lg poppins500'>Find your perfect place.</p>
+                              <p className='text-sm xl:text-normal poppins400 text-zinc-500'>Book a visit or connect with our agents.</p>
                          </div>
                          <motion.div style={{ x: x1 }}>
-                              <ArrowRight className='w-16 h-16 p-5 border border-zinc-900/50 rounded-full' />
+                              <ArrowRight className='w-10 h-10 xl:w-16 xl:h-16 xl:p-5 p-2 border border-zinc-900/50 rounded-full' />
                          </motion.div>
                     </motion.div>
                </div>

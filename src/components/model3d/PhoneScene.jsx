@@ -1,6 +1,6 @@
 import { Environment, ScrollControls, useTrail } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
-import React, { Suspense } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import PhoneModel from './PhoneModel'
 import { motion, useScroll, useTransform } from "motion/react"
 import Loading from '../shared/Loading'

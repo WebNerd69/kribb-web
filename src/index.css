@@ -3,3 +3,15 @@
 ::-webkit-scrollbar{
   display: none;
 }
+
+.functionalityCards{
+  @apply w-[40vw] xl:w-[10vw] h-[35vw] xl:h-[8vh] flex flex-col gap-4 justify-center items-center xl:justify-start xl:items-start
+}
+
+.numbersCards{
+  @apply w-full h-[30vh] xl:h-[15vh] rounded-xl bg-white shadow-xl p-5 grid grid-cols-2 grid-rows-2 xl:flex xl:justify-between xl:items-center
+}
+
+.numberCard{
+  @apply mb-5 xl:mb-0 xl:w-[20%] xl:h-full flex justify-center pl-5 flex-col xl:border-r border-zinc-300
+}

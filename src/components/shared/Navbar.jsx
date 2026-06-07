@@ -11,7 +11,7 @@ const Navbar = () => {
           })
      }
      return (
-          <nav className='w-full p-4 flex justify-between fixed top-0 left-0 text-zinc-900 z-40'>
+          <nav className='w-full p-4 flex justify-between fixed top-0 left-0 text-zinc-900 z-40 bg-[#f5f5f5] lg:bg-transparent'>
                <div className='w-16'>
                     <img src={"./icon/kribbIcon.svg"} alt="kribb" className='w-16 h-8.75 bg-contain' />
                </div>
