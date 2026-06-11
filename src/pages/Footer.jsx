@@ -30,9 +30,9 @@ const Footer = () => {
                                    <span className='w-8 h-8 absolute -top-10 -right-4 rotate-[-18deg] opacity-30 group-hover:opacity-100 transition-all duration-100'>
                                         <img className='w-6 h-6' src="./icon/doodleLineMirrored.svg" alt="" />
                                    </span>
-                                   <button className='px-5 py-3 rounded-full poppins500 bg-[#f5f5f5] cursor-pointer -rotate-12'>
+                                   <a href={"https://github.com/WebNerd69/kribb/releases/download/v1.0.1/app-release.apk"} className='px-5 py-3 rounded-full poppins500 bg-[#f5f5f5] cursor-pointer -rotate-12'>
                                         Download the app
-                                   </button>
+                                   </a>
                                    <div className='text-[#f5f5f5] opacity-[.57] poppins400 text-xs xl:text-sm -rotate-12 flex gap-1'>
                                         <img className='w-2 h-2 xl:w-4 xl:h-4 rotate-230' src="./icon/doodleLineMirrored.svg" alt="" />
                                         Android Exclusive
